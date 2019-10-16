@@ -1,0 +1,168 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Register</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-slide>
+    <ion-grid fixed>
+      <ion-row>
+        <ion-col>
+          <h3>Registro</h3>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <img src="/assets/vyacsa-foods.png" />
+        </ion-col>
+      </ion-row>
+
+      <form (ngSubmit)="f.form.valid && tryRegister(f.value)" #f="ngForm">
+        <ion-row>
+          <ion-col>
+            <ion-list>
+              <ion-item>
+                <ion-label>RFC</ion-label>
+                <ion-input
+                  name="rfc"
+                  ngModel
+                  type="email"
+                  required
+                  pattern="^([A-ZÑ&]{3,4}) ?(?:- ?)?(\d{2}(?:0[1-9]|1[0-2])(?:0[1-9]|[12]\d|3[01])) ?(?:- ?)?([A-Z\d]{2})([A\d])$"
+                  #rfc="ngModel"
+                ></ion-input>
+              </ion-item>
+
+              <div class="alert alert-danger" *ngIf="rfc.hasError('pattern')">
+                Ingrese un RFC válido.
+              </div>
+
+              <ion-item>
+                <ion-label>Nombre</ion-label>
+                <ion-input
+                  name="nombre"
+                  ngModel
+                  type="text"
+                  required
+                ></ion-input>
+              </ion-item>
+
+              <ion-item>
+                <ion-label>Email</ion-label>
+                <ion-input
+                  name="email"
+                  ngModel
+                  type="email"
+                  required
+                  pattern="[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.([a-zA-Z]{3,4})+$"
+                  #email="ngModel"
+                ></ion-input>
+              </ion-item>
+
+              <div class="alert alert-danger" *ngIf="email.hasError('pattern')">
+                Introduzca un correo valido.
+              </div>
+
+              <ion-item>
+                <ion-label>Contraseña</ion-label>
+                <ion-input
+                  name="password"
+                  ngModel
+                  type="password"
+                  required
+                  pattern="(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{6,15}$"
+                  #password="ngModel"
+                ></ion-input>
+                <!-- <ion-label>Contraseña mayor a 6 caracteres</ion-label> -->
+              </ion-item>
+
+              <div
+                class="alert alert-danger"
+                *ngIf="password.hasError('pattern')"
+              >
+                La contraseña debe tener al entre 8 y 16 caracteres, al menos un
+                dígito, al menos una minúscula y al menos una mayúscula.
+              </div>
+
+              <ion-item>
+                <ion-label>Rol</ion-label>
+                <ion-select
+                  placeholder="Seleccione uno"
+                  ngModel
+                  name="select"
+                  required
+                >
+                  <ion-select-option
+                    [value]="item.id"
+                    *ngFor="let item of stateOptions"
+                  >
+                    {{ item.nombre }}
+                  </ion-select-option>
+                </ion-select>
+              </ion-item>
+
+              <!-- 
+                  <ion-item>
+                    <ion-label>Hair Color</ion-label>
+                    <ion-select value="brown" okText="Okay" cancelText="Dismiss">
+                      <ion-select-option value="color">Brown</ion-select-option>
+                      <ion-select-option value="blonde">Blonde</ion-select-option>
+                      <ion-select-option value="black">Black</ion-select-option>
+                      <ion-select-option value="red">Red</ion-select-option>
+                    </ion-select>
+                  </ion-item> -->
+            </ion-list>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col>
+            <ion-button
+              [disabled]="!f.valid"
+              type="submit"
+              color="success"
+              expand="block"
+              shape="round"
+            >
+              Crear usuario
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </form>
+    </ion-grid>
+  </ion-slide>
+</ion-content>
+
+<ion-footer no-border>
+  <ion-toolbar>
+    <ion-row>
+      <ion-col>
+        <ion-button
+          shape="round"
+          expand="full"
+          size="small"
+          fill="outline"
+          color="danger"
+          routerLink="/login"
+        >
+          Ingresar
+        </ion-button>
+      </ion-col>
+
+      <ion-col>
+        <ion-button
+          shape="round"
+          expand="full"
+          size="small"
+          fill="outline"
+          color="danger"
+          disabled
+        >
+          Registrarme
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-footer>

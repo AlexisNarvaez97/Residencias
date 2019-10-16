@@ -1,0 +1,58 @@
+.backgro {
+  --background: linear-gradient(to bottom, #24c6dc, #514a9d);
+}
+
+h1,
+h3 {
+  font-weight: 500;
+  margin-top: 0;
+  margin-bottom: 30px;
+}
+
+h1 {
+  color: white;
+}
+
+h3 {
+  color: #4a89dc;
+}
+
+form {
+  width: 355px;
+  // opacity: 1.0;
+  margin: 1em auto;
+  padding: 2em 2em 2em 2em;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: none;
+  // box-shadow: rgba(0,0,0,0.14902) 0px 1px 1px 0px,rgba(0,0,0,0.09804) 0px 1px 2px 0px;
+}
+
+.group {
+  position: relative;
+  margin-bottom: 45px;
+}
+
+.item-has-focus .label-floating.sc-ion-label-md-h {
+    color: white;
+}
+
+ion-item {
+    --background: transparent;
+    --border-color: white;
+}
+
+ion-input {
+    --color: white;
+}
+
+ion-label {
+    --color: white;
+}
+
+.button-ingresar {
+    margin-top: 20px;
+}
+
+
+
+

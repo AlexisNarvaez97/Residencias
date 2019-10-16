@@ -1,0 +1,166 @@
+<ion-content class="ion-padding backgro">
+  <ion-slide>
+    <ion-grid fixed>
+      <ion-row>
+        <ion-col size="12">
+          <img class="pick-avatar" src="/assets/vyacsa-foods.png" />
+        </ion-col>
+        <ion-col size="12">
+          <form (ngSubmit)="loginUser(f.value); f.resetForm()" #f="ngForm">
+            <ion-grid fixed>
+              <ion-row>
+                <ion-col size="12" class="ion-no-margin">
+                  <h1>
+                    <strong>P</strong>ortal de <strong>P</strong>roveedores
+                  </h1>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col>
+                  <ion-item>
+                    <ion-label color="light" position="floating"
+                      >Email</ion-label
+                    >
+                    <ion-input type="email" name="email" ngModel></ion-input>
+                  </ion-item>
+                  <ion-item>
+                    <ion-label color="light" position="floating"
+                      >Password</ion-label
+                    >
+                    <ion-input
+                      type="password"
+                      name="password"
+                      ngModel
+                    ></ion-input>
+                  </ion-item>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col>
+                  <ion-button
+                    #limpiarButton
+                    [disabled]="!f.valid"
+                    type="submit"
+                    class="button-ingresar"
+                    expand="block"
+                    color="success"
+                    shape="round"
+                  >
+                    Ingresar
+                  </ion-button>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </form>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-slide>
+</ion-content>
+<!-- 
+<ion-footer no-border>
+    <ion-toolbar>
+      <ion-row>
+        <ion-col>
+          <ion-button
+            shape="round"
+            expand="full"
+            size="small"
+            fill="outline"
+            color="danger"
+            disabled
+          >
+            Ingresar
+          </ion-button>
+        </ion-col>
+  
+        <ion-col>
+          <ion-button
+            shape="round"
+            expand="full"
+            size="small"
+            fill="outline"
+            color="danger"
+            routerLink="/register"
+          >
+            Registrarme
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-toolbar>
+  </ion-footer> -->
+
+<!-- <ion-slide>
+    <form (ngSubmit)="loginUser(f.value)" #f="ngForm">
+      <ion-grid fixed>
+        <ion-row>
+          <ion-col>
+            <img class="pick-avatar" src="/assets/vyacsa-foods.png" />
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col>
+            <ion-list>
+              <ion-item>
+                <ion-label>Email</ion-label>
+                <ion-input
+                  name="email"
+                  type="email"
+                  ngModel
+                  required
+                  pattern="[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.([a-zA-Z]{3,4})+$"
+                  #email="ngModel"
+                >
+                </ion-input>
+              </ion-item>
+
+              <ion-item>
+                <ion-label>Recordarme</ion-label>
+                <ion-checkbox [(ngModel)]="recordarme" slot="start" name="remember-me"></ion-checkbox>
+              </ion-item>
+
+              <div class="alert alert-danger" *ngIf="email.hasError('pattern')">
+                Introduzca un correo valido.
+              </div>
+
+              <ion-item>
+                <ion-label>Password</ion-label>
+                La contraseña debe tener al entre 8 y 16 caracteres, al menos un dígito, al menos una minúscula y al menos una mayúscula.
+                      NO puede tener otros símbolos.
+                <ion-input
+                  name="password"
+                  type="password"
+                  required
+                  ngModel
+                  pattern="(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{6,15}$"
+                  #password="ngModel"
+                ></ion-input>
+              </ion-item>
+              <div
+                class="alert alert-danger"
+                *ngIf="password.hasError('pattern')"
+              >
+                La contraseña debe tener al entre 8 y 16 caracteres, al menos un
+                dígito, al menos una minúscula y al menos una mayúscula.
+              </div>
+            </ion-list>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col>
+            <ion-button
+              [disabled]="!f.valid"
+              type="submit"
+              expand="block"
+              color="success"
+              shape="round"
+            >
+              Ingresar
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </form>
+  </ion-slide> -->
