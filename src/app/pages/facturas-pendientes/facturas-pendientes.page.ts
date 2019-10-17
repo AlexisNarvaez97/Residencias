@@ -1,4 +1,6 @@
 import { Component, OnInit } from "@angular/core";
+import { FacturasService } from 'src/app/services/facturas.service';
+import Factura from 'src/app/interfaces/facturas.model';
 
 @Component({
   selector: "app-facturas-pendientes",
@@ -7,7 +9,9 @@ import { Component, OnInit } from "@angular/core";
 })
 export class FacturasPendientesPage implements OnInit {
 
-  facturas = [
+  facturas: Factura[] = [];
+
+  factura = [
     {
       name: "Pepsi SA DE CV",
       number_orden: 3200,
@@ -53,9 +57,24 @@ export class FacturasPendientesPage implements OnInit {
 
   ]
 
-  constructor() {}
+  constructor(private facturasService: FacturasService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+
+
+    this.facturasService.getFacturas().subscribe( (resp: any) => {
+      
+      console.log(resp);
+
+      this.facturas = resp;
+
+      console.log('Facturas', this.facturas);
+
+
+    })
+
+
+  }
 
   profile() {
 
