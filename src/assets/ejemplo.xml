@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Comprobante Version="3.3" Serie="Test33" Fecha="2017-10-25T15:37:40" FormaPago="01" SubTotal="600.00" Descuento="0.00" Moneda="MXN" TipoCambio="1" Total="696.00" TipoDeComprobante="I" MetodoPago="PUE" LugarExpedicion="06300" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://facturador.zendesk.com/hc/es/articles/115002595691-XSD-Emision-3-3/XML_Dotnet_3.3.xsd">
+	<Emisor Rfc="GOYA780416GM0" RegimenFiscal="612"/>
+	<Receptor Rfc="LAN7008173R5" Nombre="Receptor de pruebas" UsoCFDI="G03">
+	 <Domicilio Calle="Insurgentes" NoExterior="Edificio 4" NoInterior="Depto 8" Colonia="Las Glorias" Municipio="Nuevo Leon" Estado="Monterrey" Pais="México" CodigoPostal="06300"></Domicilio>
+	</Receptor>
+	<Conceptos>
+		<Concepto ClaveProdServ="50211503" NoIdentificacion="UT421511" Cantidad="1" ClaveUnidad="H87" Unidad="Pieza" Descripcion="Cigarros" ValorUnitario="200.00" Importe="200.00" Descuento="0.00">
+		<Importacion NumeroPedimento="15  80  3369  5005044"/>
+			<Impuestos>
+				<Impuesto TipoImpuesto="Traslado" Base="200.00" Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.160000" Importe="32.00"/>
+			</Impuestos>
+		</Concepto>
+		<Concepto ClaveProdServ="50211503" NoIdentificacion="UT421511" Cantidad="1" ClaveUnidad="H87" Unidad="Pieza" Descripcion="Cigarros" ValorUnitario="400.00" Importe="400.00" Descuento="0.00">
+			<Impuestos>
+			 <Impuesto TipoImpuesto="Traslado" Base="400.00" Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.160000" Importe="64.00"/>
+			</Impuestos>
+		</Concepto>
+	</Conceptos>
+	<AddendaFE TipoCFD="Factura" NoComprobante="012345" InformacionExtra="Factura de Prueba" Correos="Ingresar su correo"/>
+</Comprobante>

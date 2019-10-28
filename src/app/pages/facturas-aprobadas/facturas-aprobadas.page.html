@@ -1,18 +1,117 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
-    <ion-title>Facturas-aprobadas</ion-title>
-  </ion-toolbar>
-</ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>Facturas aprobadas</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+    <!-- <ion-searchbar class="ion-margin-top"></ion-searchbar> -->
+    <ion-grid fixed>
+      <ion-row>
+        <ion-col size="12">
+          <ion-card *ngFor="let factura of facturas">
+            <ion-row>
+              <ion-col size="12" class="ion-no-padding">
+                <ion-item color="danger" lines="none">
+                  <!-- Empieza fecha y icono -->
+                  <ion-label>
+                    {{ factura.fecha_creacion }}
+                  </ion-label>
+                  <ion-icon
+                    class="icon-left"
+                    name="calendar"
+                    slot="start"
+                  ></ion-icon>
+                  <!-- Cierre de fecha y icono-->
+  
+                  <!-- Empieza numero de orden y icono -->
+                  <ion-label class="label-right">
+                    {{ factura.num_orden }}
+                  </ion-label>
+                  <ion-icon
+                    class="icon-right"
+                    name="clipboard"
+                    slot="end"
+                  ></ion-icon>
+                  <!-- Cierre de numero de orden y icono -->
+                </ion-item>
+              </ion-col>
+            </ion-row>
+  
+            <ion-row>
+              <ion-col size="12" class="ion-text-center">
+                <h2 class="ion-text-wrap ion-text-capitalize">
+                  <!-- <strong>{{ factura.nombre }}</strong> -->
+                  {{ factura.nombre }}
+                </h2>
+              </ion-col>
+            </ion-row>
+            <ion-card-content> <!-- class="ion-no-padding" -->
 
-<ion-content class="ion-padding">
-
-  <ion-menu-toggle>
-    <ion-button expand="full">
-      Toggle Menu
-    </ion-button>
-  </ion-menu-toggle>
-
-</ion-content>
+              <ion-row>
+                <ion-col size="6" class="ion-no-padding">
+                  <ion-label>
+                    <h2>Bill registrada en QBs</h2>
+                  </ion-label>
+                </ion-col>
+  
+                <ion-col
+                  size="6"
+                  class="ion-no-padding"
+                  class="ion-text-start"
+                >
+                  <ion-badge class="badge-center" color="danger"
+                    >Por registrar</ion-badge
+                  >
+                </ion-col>
+              </ion-row>
+  
+              <ion-row class="ion-text-center">
+                <ion-col size="12" class="ion-no-padding ion-margin-top">
+                  <ion-label>
+                    <!-- Archivos -->
+                    <h2 class="archived">Archivos</h2>
+                  </ion-label>
+                </ion-col>
+                <ion-col
+                  size="6"
+                  class="ion-no-padding ion-margin-top"
+                  (click)="pdf()"
+                >
+                  <i class="fas fa-file-pdf fa-2x"></i>
+                </ion-col>
+                <ion-col
+                  size="6"
+                  class="ion-no-padding ion-margin-top"
+                  (click)="xml()"
+                >
+                  <i class="far fa-file-code fa-2x"></i>
+                </ion-col>
+              </ion-row>
+  
+              <ion-row class="ion-text-center">
+  
+                <ion-col size="12" class="ion-no-padding ion-margin-top">
+  
+                  <ion-label>
+                    <h2 class="actions"> Acciones </h2>
+                  </ion-label>
+                  
+                </ion-col>
+  
+                <ion-col size="12" class="ion-no-padding ion-margin-top">
+                  <ion-button expand="full" (click)="editar()" color="primary">
+                    <ion-icon slot="icon-only" name="create"></ion-icon>
+                  </ion-button>
+                </ion-col>
+              </ion-row>
+            </ion-card-content> 
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-content>
+  

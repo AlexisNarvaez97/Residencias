@@ -13,6 +13,10 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { IonicStorageModule } from "@ionic/storage";
 
+import { EmailComposer } from '@ionic-native/email-composer/ngx';
+
+import { Ionic4DatepickerModule } from '@logisticinfotech/ionic4-datepicker';
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -20,12 +24,14 @@ import { IonicStorageModule } from "@ionic/storage";
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
+    Ionic4DatepickerModule,
     HttpClientModule,
     IonicStorageModule.forRoot()
   ],
   providers: [
     StatusBar,
     SplashScreen,
+    EmailComposer,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

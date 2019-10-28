@@ -5,13 +5,12 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
-import { FacturasPendientesPage } from './facturas-pendientes.page';
-import { ComponentsModule } from '../../components/components.module';
+import { InforFacturaPage } from './infor-factura.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: FacturasPendientesPage
+    component: InforFacturaPage
   }
 ];
 
@@ -22,6 +21,6 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [FacturasPendientesPage]
+  declarations: [InforFacturaPage]
 })
-export class FacturasPendientesPageModule {}
+export class InforFacturaPageModule {}

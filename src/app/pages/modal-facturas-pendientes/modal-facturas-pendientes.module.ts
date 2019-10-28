@@ -5,13 +5,12 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
-import { FacturasPendientesPage } from './facturas-pendientes.page';
-import { ComponentsModule } from '../../components/components.module';
+import { ModalFacturasPendientesPage } from './modal-facturas-pendientes.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: FacturasPendientesPage
+    component: ModalFacturasPendientesPage
   }
 ];
 
@@ -22,6 +21,6 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [FacturasPendientesPage]
+  declarations: [ModalFacturasPendientesPage]
 })
-export class FacturasPendientesPageModule {}
+export class ModalFacturasPendientesPageModule {}

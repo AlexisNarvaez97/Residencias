@@ -18,7 +18,6 @@ export class AuthenticateService {
     return new Promise(( resolve, reject) => {
 
       this.storage.get(email).then( usuario => {
-        
         if(usuario) {
           if( usuario.password === btoa(passwordEncryptada)) {
             resolve(usuario);

@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
-import { FacturasService } from 'src/app/services/facturas.service';
-import Factura from 'src/app/interfaces/facturas.model';
+import { FacturasService } from "src/app/services/facturas.service";
+import Factura from "src/app/interfaces/facturas.model";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-facturas-pendientes",
@@ -8,91 +9,46 @@ import Factura from 'src/app/interfaces/facturas.model';
   styleUrls: ["./facturas-pendientes.page.scss"]
 })
 export class FacturasPendientesPage implements OnInit {
-
   facturas: Factura[] = [];
 
-  factura = [
-    {
-      name: "Pepsi SA DE CV",
-      number_orden: 3200,
-      date: '01/10/2019',
-      estado: true,
-      archivos: [
-        {
-          pdf: 'hola'
-        },
-        {
-          xml: 'hello'
-        }
-      ]
-    },
-    {
-      name: "COCA SA DE CV",
-      number_orden: 3200,
-      date: '01/10/2019',
-      estado: true,
-      archivos: [
-        {
-          pdf: 'hola'
-        },
-        {
-          xml: 'hello'
-        }
-      ]
-    },
-    {
-      name: "Tecate SA DE CV",
-      number_orden: 3200,
-      date: '01/10/2019',
-      estado: true,
-      archivos: [
-        {
-          pdf: 'hola'
-        },
-        {
-          xml: 'hello'
-        }
-      ]
-    },
-
-  ]
-
-  constructor(private facturasService: FacturasService) {}
+  constructor(
+    private facturasService: FacturasService,
+    private router: Router
+  ) {}
 
   ngOnInit() {
-
-
-    this.facturasService.getFacturas().subscribe( (resp: any) => {
-      
-      console.log(resp);
+    this.facturasService.getFacturas().subscribe((resp: any) => {
+      // console.log(resp);
 
       this.facturas = resp;
 
-      console.log('Facturas', this.facturas);
-
-
-    })
-
-
+      console.log("Facturas", this.facturas);
+    });
   }
 
-  profile() {
+  profile() {}
 
+  aceptar(orden) {
+
+    this.facturasService.selectedObject = orden;
+
+    const id = orden;
+
+    this.router.navigate(["infor-factura/", 123123]);
   }
 
-  aceptar() {
-    
+  aceptada() {}
+
+  rechazar() {}
+
+  logout() {}
+
+
+  xml() {
+    console.log('XML');
   }
 
-  aceptada () {
-
-  }
-
-  rechazar() {
-
-  }
-
-  logout() {
-
+  pdf() {
+    console.log('PDF');
   }
 }

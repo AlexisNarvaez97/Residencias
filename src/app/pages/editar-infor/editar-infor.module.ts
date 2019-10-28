@@ -4,14 +4,14 @@ import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
+import { Ionic4DatepickerModule } from '@logisticinfotech/ionic4-datepicker';
 
-import { FacturasPendientesPage } from './facturas-pendientes.page';
-import { ComponentsModule } from '../../components/components.module';
+import { EditarInforPage } from './editar-infor.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: FacturasPendientesPage
+    component: EditarInforPage
   }
 ];
 
@@ -20,8 +20,9 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
+    Ionic4DatepickerModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [FacturasPendientesPage]
+  declarations: [EditarInforPage]
 })
-export class FacturasPendientesPageModule {}
+export class EditarInforPageModule {}

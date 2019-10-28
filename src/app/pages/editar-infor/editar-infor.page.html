@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/menu/facturas-aprobadas"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="ion-text-wrap"
+      >Asignar fecha de pagos e items de QBs</ion-title
+    >
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid fixed>
+    <ion-list>
+      <ion-item>
+        <ion-label>Memo</ion-label>
+        <ion-input></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Referencia</ion-label>
+        <ion-input></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-input
+          readonly
+          [(ngModel)]="mydate"
+          [liIonic4Datepicker]="datePickerObj"
+        >
+        </ion-input>
+      </ion-item>
+    </ion-list>
+  </ion-grid>
+</ion-content>

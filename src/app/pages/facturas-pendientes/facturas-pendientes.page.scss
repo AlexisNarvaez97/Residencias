@@ -1,13 +1,20 @@
-.pick-profile {
-    position: relative;
-    top: 20px;
-    right: 10px;
-    height: 30px !important;
-    width: 30px !important;
-}
 
 .background-gradient {
     background: linear-gradient(to right, #74ebd5, #acb6e5);
+}
+
+.state-right {
+    margin-left: 15px;
+}
+
+.archived {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.actions {
+    font-size: 20px;
+    font-weight: 700;
 }
 
 .fa-file-pdf {
@@ -18,4 +25,23 @@
 .fa-file-code {
     color: black;
     background: white;
+}
+
+.icon-left {
+    margin: 0;
+    margin-right: 5px;
+}
+
+.icon-right {
+    margin: 0;
+}
+
+.label-right {
+    position: relative;
+    right: -101px;
+}
+
+.badge-center {
+    position: absolute;
+    top: 2px;
 }

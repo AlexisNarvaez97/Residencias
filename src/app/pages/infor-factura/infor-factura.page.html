@@ -1,0 +1,198 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/menu/facturas-pendientes"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="ion-text-wrap"
+      >Verificación de facturas y articulos recibidos</ion-title
+    >
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col size="12">
+        <ion-card>
+          <ion-row>
+            <ion-col size="12" class="ion-no-padding">
+              <ion-item color="tertiary" lines="none">
+                <!-- Empieza fecha y icono -->
+                <ion-label> </ion-label>
+                <ion-icon
+                  class="icon-left"
+                  name="calendar"
+                  slot="start"
+                ></ion-icon>
+                <!-- Cierre de fecha y icono-->
+
+                <!-- Empieza numero de orden y icono -->
+                <ion-label class="label-right"> </ion-label>
+                <i class="icon-right fas fa-ticket-alt fa-1x"></i>
+                <!-- <ion-icon
+                      class="icon-right"
+                      name="clipboard"
+                      slot="end"
+                    ></ion-icon> -->
+                <!-- Cierre de numero de orden y icono -->
+              </ion-item>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col size="12" class="ion-text-center">
+              <h2 class="ion-text-wrap ion-text-capitalize">
+                <!-- <strong>{{ factura.nombre }}</strong> -->
+                CABEZA DE LOMO DE CAJA FRESCO.
+              </h2>
+            </ion-col>
+          </ion-row>
+
+          <ion-card-content class="ion-no-padding">
+            <!-- class="ion-no-padding" -->
+            <ion-row>
+              <ion-col size="6" class="ion-no-padding">
+                <ion-label>
+                  <h2 class="state-right">Cantidad</h2>
+                </ion-label>
+              </ion-col>
+
+              <ion-col
+                size="6"
+                class="ion-no-padding ion-justify-content-center ion-align-items-center"
+              >
+                <ion-badge class="badge-center" color="success">
+                  {{ cantidadSolicitada | currency }}
+                </ion-badge>
+              </ion-col>
+            </ion-row>
+
+            <ion-row>
+              <ion-col size="6" class="ion-no-padding">
+                <ion-label>
+                  <h2 class="state-right">Monto</h2>
+                </ion-label>
+              </ion-col>
+
+              <ion-col
+                size="6"
+                class="ion-no-padding ion-justify-content-center ion-align-items-center"
+              >
+                <ion-badge class="badge-center" color="success">
+                  {{ 76885.5 | currency }}
+                </ion-badge>
+              </ion-col>
+            </ion-row>
+
+            <ion-row>
+              <ion-col size="6" class="ion-no-padding">
+                <ion-label>
+                  <h2 class="state-right">Unitario</h2>
+                </ion-label>
+              </ion-col>
+
+              <ion-col
+                size="6"
+                class="ion-no-padding ion-justify-content-center ion-align-items-center"
+              >
+                <ion-badge class="badge-center" color="success">
+                  {{ precioUnitario | currency }}
+                </ion-badge>
+              </ion-col>
+            </ion-row>
+
+            <ion-row>
+              <ion-col size="6" class="ion-no-padding">
+                <ion-label>
+                  <h2 class="state-right">Descuento</h2>
+                </ion-label>
+              </ion-col>
+
+              <ion-col
+                size="6"
+                class="ion-no-padding ion-justify-content-center ion-align-items-center"
+              >
+                <ion-badge class="badge-center" color="success">
+                  {{ 0 | currency }}
+                </ion-badge>
+              </ion-col>
+            </ion-row>
+
+            <ion-row class="ion-text-center">
+              <ion-col size="12">
+                <ion-item lines="none">
+                  <ion-label>Cantidad Recibida: </ion-label>
+                  <ion-input
+                    name="cantidad"
+                    type="number"
+                    ngModel
+                    placeholder="Cantidad..."
+                    (ngModelChange)="modelChanged($event)"
+                  ></ion-input>
+                </ion-item>
+              </ion-col>
+              <!-- <ion-col size="6">
+                <ion-label>Cantidad recibida: </ion-label>
+              </ion-col>
+              <ion-col size="6">
+                <ion-input name="cantidad" type="number" ngModel placeholder="Cantidad recibida..." (ngModelChange)="modelChanged($event)"></ion-input>
+              </ion-col> -->
+            </ion-row>
+
+            <ion-row class="ion-text-center">
+              <ion-col size="12" class="ion-no-padding ion-margin-top">
+                <ion-label>
+                  <h2 class="actions">Acciones</h2>
+                </ion-label>
+              </ion-col>
+
+              <ion-col size="12" class="ion-no-padding ion-margin-top">
+                <ion-button
+                  expand="full"
+                  (click)="aceptar()"
+                  color="success"
+                  class="ion-no-margin"
+                >
+                  <ion-icon slot="icon-only" name="checkmark"></ion-icon>
+                </ion-button>
+              </ion-col>
+            </ion-row>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+
+    <ion-row *ngIf="facturaRechazada">
+
+      <ion-col size="12">
+        <ion-list>
+          <ion-radio-group (ionChange)="changeRadio($event)" allowEmptySelection="true">
+            <ion-list-header>
+              Seleccione una de las siguientes opciones para notificar al proveedor:
+            </ion-list-header>
+
+            <ion-item>
+              <ion-label>Refacturación</ion-label>
+              <ion-radio value="refacturacion"></ion-radio>
+            </ion-item>
+
+            <ion-item>
+              <ion-label>Nota de crédito</ion-label>
+              <ion-radio value="nota"></ion-radio>
+            </ion-item>
+          </ion-radio-group>
+        </ion-list>
+      </ion-col>
+
+      <ion-col size="12">
+
+          <ion-button expand="block" fill="outline" (click)="aceptarFactura()">Aceptar</ion-button>
+          <br>
+          <ion-button expand="block" fill="outline" routerLink="/menu/facturas-pendientes">Cancelar</ion-button>
+        
+      </ion-col>
+
+
+    </ion-row>
+  </ion-grid>
+</ion-content>

@@ -36,7 +36,7 @@ export class MenuPage implements OnInit {
 
   async salir() {
     await this.storage.set("isLogged", false);
-    this.storage.remove("currentUser");
+    this.storage.remove("User");
     this.navCtrl.navigateRoot("/login");
   }
 }
