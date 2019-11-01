@@ -86,7 +86,7 @@
               <ion-col
                 size="6"
                 class="ion-no-padding ion-margin-top"
-                (click)="pdf()"
+                (click)="openLocalPdf()"
               >
                 <i class="fas fa-file-pdf fa-2x"></i>
               </ion-col>
@@ -117,7 +117,7 @@
               </ion-col>
 
               <ion-col size="6" class="ion-no-padding ion-margin-top">
-                <ion-button expand="full" (click)="rechazar()" color="danger" class="ion-no-margin">
+                <ion-button expand="full" (click)="rechazar(factura)" color="danger" class="ion-no-margin">
                   <ion-icon slot="icon-only" name="close"></ion-icon>
                 </ion-button>
               </ion-col>

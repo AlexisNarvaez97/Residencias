@@ -4,6 +4,7 @@ import { Router, ActivatedRoute } from "@angular/router";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { NgxXml2jsonService } from "ngx-xml2json";
 import { xml2json } from "xml-js";
+import * as moment from 'moment';
 
 import { parseString } from "xml2js";
 
@@ -11,6 +12,7 @@ import { FacturasService } from "../../services/facturas.service";
 
 import Swal from "sweetalert2";
 import { EmailComposer } from "@ionic-native/email-composer/ngx";
+import Factura from '../../interfaces/facturas.model';
 
 @Component({
   selector: "app-infor-factura",
@@ -28,7 +30,7 @@ export class InforFacturaPage implements OnInit {
   xml = ``;
   xmlString = "";
 
-  data: any;
+  factura: Factura;
 
   public xmlItems: any;
 
@@ -43,9 +45,9 @@ export class InforFacturaPage implements OnInit {
   ) {
     // console.log(this.facturasService.selectedObject);
 
-    this.data = this.facturasService.selectedObject;
+    this.factura = this.facturasService.selectedObject;
 
-    // console.log('DATA', this.data);
+    console.log("DATA", this.factura);
   }
 
   ngOnInit() {
@@ -53,7 +55,7 @@ export class InforFacturaPage implements OnInit {
     // const xml = parser.parseFromString(this.xml, 'text/xml');
     // const obj = this.ngxXml2jsonService.xmlToJson(xml);
     // console.log(obj);
-    this.loadXML();
+    // this.loadXML();
     // this.readXml();
 
     // let parseString = require("xml2js").parseString;
@@ -81,13 +83,78 @@ export class InforFacturaPage implements OnInit {
   }
 
   changeRadio(event) {
+
+    let factura: Factura;
+
+    const value = event.detail.value;
+
     console.log(event.detail.value);
+
+    if (value === "refacturacion") {
+
+      factura = {
+        ...this.factura,
+      }
+
+      factura.estado = '1.2';
+
+      console.log("Selecciono refacturacion");
+
+      console.log('Refacturacion', factura);
+
+
+      this.emailComposer.open({
+        app: "gmail",
+        to: "alexisnarvaez97@hotmail.com",
+        cc: "alexisnarvaez97@hotmail.com",
+        subject: `${this.factura.nombre} con N.O.C ${this.factura.num_orden}`,
+        body: "Refacturación",
+        isHtml: true
+      });
+
+
+    } else if (value === "nota") {
+      factura = {
+        ...this.factura,
+      }
+
+      factura.estado = '1.1';
+
+      console.log('Nota', factura);
+
+      console.log("Selecciono nota");
+      this.emailComposer.open({
+        app: "gmail",
+        to: "alexisnarvaez97@hotmail.com",
+        cc: "alexisnarvaez97@hotmail.com",
+        subject: `${this.factura.nombre} con N.O.C ${this.factura.num_orden}`,
+        body: "Nota de credito",
+        isHtml: true
+      });
+    }
   }
 
   aceptar() {
+
+    // const date = new Date();
+    const now = moment().format('YYYY MM DD');
+
+    console.log(now);
+
+    const cantidadR = this.cantidadRecibida;
+    const cantidadS = this.cantidadSolicitada;
+    const precioU = this.precioUnitario;
+
+    const diferencia = Number((cantidadS - cantidadR).toFixed(2));
+    const monto = Number((diferencia * precioU).toFixed(2));
+
+    console.log('Cantidad', diferencia);
+    console.log('Monto', monto);
+
+
     console.log(this.cantidadRecibida);
 
-    if (this.cantidadRecibida < this.cantidadSolicitada) {
+    if (cantidadR < cantidadS) {
       Swal.fire({
         type: "error",
         title: "Existe diferencia entre la mercancía recibida y la facturada",
@@ -100,8 +167,7 @@ export class InforFacturaPage implements OnInit {
           Swal.fire({
             position: "center",
             type: "error",
-            title: `Existe una diferencia de ${this.cantidadSolicitada -
-              this.cantidadRecibida}`,
+            title: `Existe una diferencia de ${diferencia.toFixed(2)}`,
             showConfirmButton: false,
             timer: 2000
           });
@@ -196,7 +262,6 @@ export class InforFacturaPage implements OnInit {
       };
       // Send a text message using default options
       this.emailComposer.open(email);
-
 
       //   console.log('Respuesta', text);
       //   // Swal.fire(text);

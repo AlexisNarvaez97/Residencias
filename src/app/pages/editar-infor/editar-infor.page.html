@@ -23,12 +23,16 @@
       </ion-item>
 
       <ion-item>
+        <ion-label>Fecha</ion-label>
         <ion-input
           readonly
+          name="dateinit"
           [(ngModel)]="mydate"
+          (ionChange)="onChangeDateEnd($event)"
           [liIonic4Datepicker]="datePickerObj"
         >
         </ion-input>
+        <ion-icon slot="end" name="calendar"></ion-icon>
       </ion-item>
     </ion-list>
   </ion-grid>

@@ -10,7 +10,7 @@ const URL = environment.url;
 })
 export class FacturasService {
 
-  selectedObject = {};
+  selectedObject: any;
 
   constructor(private http: HttpClient) {
   }
