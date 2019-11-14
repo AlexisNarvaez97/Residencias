@@ -18,7 +18,7 @@ import {
   styleUrls: ["./facturas-pendientes.page.scss"]
 })
 export class FacturasPendientesPage implements OnInit {
-  facturas: Factura[] = [];
+  facturas: any[] = [];
 
   constructor(
     // tslint:disable-next-line: max-line-length
@@ -46,11 +46,13 @@ export class FacturasPendientesPage implements OnInit {
   profile() {}
 
   aceptar(orden) {
+
+    
     this.facturasService.selectedObject = orden;
 
-    const id = orden;
+    // const id = orden;
 
-    this.router.navigate(["infor-factura/", 123123]);
+    // this.router.navigate(["infor-factura/", orden.idFactura]);
   }
 
   aceptada() {}

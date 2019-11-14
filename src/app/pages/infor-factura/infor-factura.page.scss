@@ -8,8 +8,8 @@
 }
 
 .archived {
-    font-size: 20px;
-    font-weight: 700;
+    font-size: 15px;
+    font-weight: 300;
 }
 
 .actions {
@@ -44,4 +44,31 @@
 .badge-center {
     position: absolute;
     top: 2px;
+}
+
+ion-item {
+    // --border-color: black;
+}
+
+.margin-top {
+    margin-top: 10px;
+}
+
+.badge-center-descount {
+    position: absolute;
+    left: 5px;
+}
+
+.concept-dif {
+    display: flex;
+
+    h3 {
+        margin-right: 45px;
+        margin-left: 20px;
+    }
+
+    .concept-monto {
+        position: relative;
+        right: 37px;
+    }
 }

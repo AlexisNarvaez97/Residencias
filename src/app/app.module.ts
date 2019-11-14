@@ -17,6 +17,8 @@ import { EmailComposer } from '@ionic-native/email-composer/ngx';
 
 import { Ionic4DatepickerModule } from '@logisticinfotech/ionic4-datepicker';
 
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+
 import { File } from '@ionic-native/file/ngx';
 import { FileTransfer } from '@ionic-native/file-transfer/ngx';
 import { FileOpener } from '@ionic-native/file-opener/ngx';
@@ -29,6 +31,7 @@ import { DocumentViewer } from '@ionic-native/document-viewer/ngx';
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
+    NgxDatatableModule,
     Ionic4DatepickerModule,
     HttpClientModule,
     IonicStorageModule.forRoot()

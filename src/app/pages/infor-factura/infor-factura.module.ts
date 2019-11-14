@@ -5,6 +5,8 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+
 import { InforFacturaPage } from './infor-factura.page';
 
 const routes: Routes = [
@@ -18,6 +20,7 @@ const routes: Routes = [
   imports: [
     CommonModule,
     FormsModule,
+    NgxDatatableModule,
     IonicModule,
     RouterModule.forChild(routes)
   ],

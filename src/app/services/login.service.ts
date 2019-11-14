@@ -18,19 +18,6 @@ export class LoginService {
     formData.append('email', email);
     formData.append('password', password);
 
-    console.log(formData);
-
-    const usuario = {
-      email,
-      password
-    };
-
-    let body = JSON.stringify(usuario);
-
-    console.log(body);
-
-    // console.log(`${URL}/login`);
-
     return this.http.post<RespuestaLogin>(`${URL}/login`, formData);
   }
 

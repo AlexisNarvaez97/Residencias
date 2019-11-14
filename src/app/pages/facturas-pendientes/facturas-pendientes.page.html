@@ -18,7 +18,7 @@
               <ion-item color="tertiary" lines="none">
                 <!-- Empieza fecha y icono -->
                 <ion-label>
-                  {{ factura.fecha_creacion }}
+                  {{ factura.fechaC }}
                 </ion-label>
                 <ion-icon
                   class="icon-left"
@@ -29,7 +29,7 @@
 
                 <!-- Empieza numero de orden y icono -->
                 <ion-label class="label-right">
-                  {{ factura.num_orden }}
+                  {{ factura.numO }}
                 </ion-label>
                 <i class="icon-right fas fa-ticket-alt fa-1x"></i>
                 <!-- <ion-icon
@@ -111,7 +111,7 @@
 
 
               <ion-col size="6" class="ion-no-padding ion-margin-top">
-                <ion-button expand="full" (click)="aceptar(factura)" color="success" class="ion-no-margin">
+                <ion-button [routerLink]="['/infor-factura', 1917]" expand="full" (click)="aceptar(factura)" color="success" class="ion-no-margin">
                   <ion-icon slot="icon-only" name="checkmark"></ion-icon>
                 </ion-button>
               </ion-col>
