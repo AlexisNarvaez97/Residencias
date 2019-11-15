@@ -14,6 +14,7 @@ import Swal from "sweetalert2";
 import { EmailComposer } from "@ionic-native/email-composer/ngx";
 import Factura from "../../interfaces/facturas.model";
 import { NavController } from "@ionic/angular";
+import { Xliff } from "@angular/compiler";
 
 @Component({
   selector: "app-infor-factura",
@@ -32,6 +33,9 @@ export class InforFacturaPage implements OnInit {
 
   cantidadSolicitada;
   precioUnitario;
+
+  facturaDiferencia;
+
   cantidadTotal;
 
   facturaDif = [];
@@ -204,8 +208,8 @@ export class InforFacturaPage implements OnInit {
             confirmButtonText: "Aceptar"
           }).then(result => {
             if (result.value) {
-              this.boton_verde = false;
-              this.boton_rojo = true;
+              // this.boton_verde = false;
+              // this.boton_rojo = true;
 
               const facturaDiferencia = {
                 index,
@@ -217,22 +221,11 @@ export class InforFacturaPage implements OnInit {
                 monto
               };
 
-              console.log(`${nombre}|${diferencia}|${monto}~`);
+              // console.log(`${nombre}|${diferencia}|${monto}~`);
 
-              if (this.facturaDif.length > 1) {
-                this.facturaDif.forEach(factura => {
-                  if (factura.index === index) {
-                    console.log("Existe");
-                    return;
-                  }
-                });
-              }
               this.facturaDif.push(facturaDiferencia);
 
-              // console.log('Longitud', this.facturaDif.length);
-
-              // console.log(this.facturaDif);
-              // this.facturaDif = facturaDiferencia;
+              console.log(this.facturaDif);
 
               this.facturaRechazada = true;
               Swal.fire({
@@ -242,11 +235,31 @@ export class InforFacturaPage implements OnInit {
                 showConfirmButton: false,
                 timer: 2000
               });
+
+              // const longitudArray = this.facturaDif.length;
+
+              // console.log('Longitud', longitudArray);
+
+              // this.facturaDif.forEach( resp => {
+              //   // console.log('SHEKEROU', resp);
+
+              //   if ( resp.index === 1) {
+              //     this.facturaDif[index] = facturaDiferencia;
+              //     // console.log('Es 1 men');
+              //   } else {
+              //     // console.log('No es uno men, son otros');
+              //   }
+
+              // });
             }
           });
+        } else {
+          console.log("No hay diferencias pero si te pasaste de verga");
         }
       }
     }
+    // console.log('ARREGLO', this.facturaDif);
+    // console.log(this.facturaDiferencia);
   }
 
   async aceptarFactura() {
